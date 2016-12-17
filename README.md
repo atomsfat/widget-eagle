@@ -1,4 +1,4 @@
-# com-chilipeppr-widget-eagle
+# com-chilipeppr-widget-eagle-debug
 This widget lets you drag in an Eagle PCB ".brd" file to mill.
 
 ![alt text](screenshot.png "Screenshot")
@@ -11,13 +11,13 @@ not conflict with other ChiliPeppr widgets.
 
 | Item                  | Value           |
 | -------------         | ------------- | 
-| ID                    | com-chilipeppr-widget-eagle |
+| ID                    | com-chilipeppr-widget-eagle-debug |
 | Name                  | Widget / Eagle BRD v4 |
 | Description           | This widget lets you drag in an Eagle PCB ".brd" file to mill. |
-| chilipeppr.load() URL | http://raw.githubusercontent.com/chilipeppr/widget-eagle/master/auto-generated-widget.html |
-| Edit URL              | http://ide.c9.io/chilipeppr/widget-eagle |
-| Github URL            | http://github.com/chilipeppr/widget-eagle |
-| Test URL              | https://preview.c9users.io/chilipeppr/widget-eagle/widget.html |
+| chilipeppr.load() URL | http://raw.githubusercontent.com/atomsfat/widget-eagle/master/auto-generated-widget.html |
+| Edit URL              | http://ide.c9.io/atomsfat/workspace-grbl |
+| Github URL            | http://github.com/atomsfat/widget-eagle |
+| Test URL              | https://preview.c9users.io/atomsfat/workspace-grbl/widget.html |
 
 ## Example Code for chilipeppr.load() Statement
 
@@ -29,20 +29,20 @@ back the instance of it.
 
 ```javascript
 // Inject new div to contain widget or use an existing div with an ID
-$("body").append('<' + 'div id="myDivWidgetEagle"><' + '/div>');
+$("body").append('<' + 'div id="myDivWidgetEagleDebug"><' + '/div>');
 
 chilipeppr.load(
-  "#myDivWidgetEagle",
-  "http://raw.githubusercontent.com/chilipeppr/widget-eagle/master/auto-generated-widget.html",
+  "#myDivWidgetEagleDebug",
+  "http://raw.githubusercontent.com/atomsfat/widget-eagle/master/auto-generated-widget.html",
   function() {
-    // Callback after widget loaded into #myDivWidgetEagle
+    // Callback after widget loaded into #myDivWidgetEagleDebug
     // Now use require.js to get reference to instantiated widget
     cprequire(
-      ["inline:com-chilipeppr-widget-eagle"], // the id you gave your widget
-      function(myObjWidgetEagle) {
+      ["inline:com-chilipeppr-widget-eagle-debug"], // the id you gave your widget
+      function(myObjWidgetEagleDebug) {
         // Callback that is passed reference to the newly loaded widget
-        console.log("Widget / Eagle BRD v4 just got loaded.", myObjWidgetEagle);
-        myObjWidgetEagle.init();
+        console.log("Widget / Eagle BRD v4 just got loaded.", myObjWidgetEagleDebug);
+        myObjWidgetEagleDebug.init();
       }
     );
   }
@@ -64,7 +64,7 @@ To better understand how ChiliPeppr's subscribe() method works see amplify.js's 
           </tr>
       </thead>
       <tbody>
-      <tr valign="top"><td>/com-chilipeppr-widget-eagle/onAddGcode</td><td>This signal lets a 3rd party add-on inject its own Gcode into the 
+      <tr valign="top"><td>/com-chilipeppr-widget-eagle-debug/onAddGcode</td><td>This signal lets a 3rd party add-on inject its own Gcode into the 
             overall final Gcode for the Eagle BRD Widget. Here is an example of how to subscribe. <br><br><pre>
 chilipeppr.subscribe(
     "/com-chilipeppr-widget-eagle/addGcode", 
@@ -84,23 +84,23 @@ onAddGcode : function(addGcodeCallback, gcodeParts, eagleWidget, helpDesc){
             Gcode by looking at parameter 2 gcodeParts to see if an index has already been used so you 
             don't clobber it. If you want to delete Gcode from gcodeParts you could do that as well and 
             the main widget will reflect the deletion. 
-            </td></tr><tr valign="top"><td>/com-chilipeppr-widget-eagle/beforeLayerGenerate</td><td>This widget fires a signal before generating the Three.js objects
+            </td></tr><tr valign="top"><td>/com-chilipeppr-widget-eagle-debug/beforeLayerGenerate</td><td>This widget fires a signal before generating the Three.js objects
                 and Clipper paths for a board layer. The Three.js objects are 3D objects representing the
                 pads, vias, smds, wires, polygons, and dimensions. Those Three.js objects are used to
                 populate the 3D viewer and to calculate 2D Clipper paths from. <br><br>Clipper paths are the 2D XY
                 values of all the layer's objects and are generated so that unions and diffs can be
                 calculated on those paths in the render step. Clipper paths can be easily inflated and
                 deflated by the Clipper.js library which is why they are so important to this widget.<br><br>When you get this signal a reference to "this", i.e. the Eagle Widget, is included in
-                the payload so you may use it to manipulate this widget as you see fit.</td></tr><tr valign="top"><td>/com-chilipeppr-widget-eagle/afterLayerGenerate</td><td>Please see the /beforeLayerGenerate description to understand this
+                the payload so you may use it to manipulate this widget as you see fit.</td></tr><tr valign="top"><td>/com-chilipeppr-widget-eagle-debug/afterLayerGenerate</td><td>Please see the /beforeLayerGenerate description to understand this
                 signal better. The /afterLayerGenerate signal is fired after this widget is done
-                generating the board layer. The payload is the same as the before signal.</td></tr><tr valign="top"><td>/com-chilipeppr-widget-eagle/beforeToolPathRender</td><td>This widget fires a signal before the rendering of the tool path 
+                generating the board layer. The payload is the same as the before signal.</td></tr><tr valign="top"><td>/com-chilipeppr-widget-eagle-debug/beforeToolPathRender</td><td>This widget fires a signal before the rendering of the tool path 
                 for the milling of the Eagle BRD. As the user tests out different inflate values, you 
                 will get this signal for each re-render of the tool path the user asks for, i.e. when 
                 they click the "render" button.<br><br>In the payload is a reference to "this" so you can possibly grab info or do other 
                 manipulations of the board before we render the tool path. This is especially useful for add-on 
                 widgets to the Eagle BRD widget such as the Solder Paste Dispenser Add-On or the
                 Pick and Place Add-On.
-                </td></tr><tr valign="top"><td>/com-chilipeppr-widget-eagle/afterToolPathRender</td><td>This widget fires a signal after the rendering of the tool path 
+                </td></tr><tr valign="top"><td>/com-chilipeppr-widget-eagle-debug/afterToolPathRender</td><td>This widget fires a signal after the rendering of the tool path 
                 for the Eagle BRD. The tool path is the blue line in the 3D viewer.
                 Similar to the /beforeToolPathRender signal, in the payload is a reference to "this" so you can possibly grab info or do other 
                 manipulations of the board after we render. This is especially useful for add-on 
@@ -123,7 +123,7 @@ To better understand how ChiliPeppr's publish() method works see amplify.js's do
           </tr>
       </thead>
       <tbody>
-      <tr valign="top"><td>/com-chilipeppr-widget-eagle/getBoardData</td><td>Call this with a callback and you will immediately get back the baord data
+      <tr valign="top"><td>/com-chilipeppr-widget-eagle-debug/getBoardData</td><td>Call this with a callback and you will immediately get back the baord data
                 to your callback. Call like 
                 chilipeppr.publish("/com-chilipeppr-eagle/getBoardData", mycallback);
                 This returns all of the board data for you, so that you can know
@@ -172,7 +172,7 @@ To better understand how ChiliPeppr's publish() method works see amplify.js's do
           </tr>
       </thead>
       <tbody>
-      <tr valign="top"><td>/com-chilipeppr-widget-eagle/com-chilipeppr-elem-dragdrop/ondropped</td><td>We subscribe to this signal at a higher priority to intercept the signal, double check if it is an Eagle Brd file and if so, we do not let it propagate by returning false. That way the 3D Viewer, Gcode widget, or other widgets will not get Eagle Brd file drag/drop events because they will not know how to interpret them.</td></tr>    
+      <tr valign="top"><td>/com-chilipeppr-widget-eagle-debug/com-chilipeppr-elem-dragdrop/ondropped</td><td>We subscribe to this signal at a higher priority to intercept the signal, double check if it is an Eagle Brd file and if so, we do not let it propagate by returning false. That way the 3D Viewer, Gcode widget, or other widgets will not get Eagle Brd file drag/drop events because they will not know how to interpret them.</td></tr>    
       </tbody>
   </table>
 
@@ -189,7 +189,7 @@ The table below shows, in order, the methods and properties inside the widget/el
           </tr>
       </thead>
       <tbody>
-      <tr valign="top"><td>id</td><td>string</td><td>"com-chilipeppr-widget-eagle"<br><br>The ID of the widget. You must define this and make it unique.</td></tr><tr valign="top"><td>name</td><td>string</td><td>"Widget / Eagle BRD v4"</td></tr><tr valign="top"><td>desc</td><td>string</td><td>"This widget lets you drag in an Eagle PCB \".brd\" file to mill."</td></tr><tr valign="top"><td>url</td><td>string</td><td>"http://raw.githubusercontent.com/chilipeppr/widget-eagle/master/auto-generated-widget.html"</td></tr><tr valign="top"><td>fiddleurl</td><td>string</td><td>"http://ide.c9.io/chilipeppr/widget-eagle"</td></tr><tr valign="top"><td>githuburl</td><td>string</td><td>"http://github.com/chilipeppr/widget-eagle"</td></tr><tr valign="top"><td>testurl</td><td>string</td><td>"http://widget-eagle-chilipeppr.c9users.io/widget.html"</td></tr><tr valign="top"><td>publish</td><td>object</td><td>Please see docs above.<br><br>Define the publish signals that this widget/element owns or defines so that
+      <tr valign="top"><td>id</td><td>string</td><td>"com-chilipeppr-widget-eagle-debug"<br><br>The ID of the widget. You must define this and make it unique.</td></tr><tr valign="top"><td>name</td><td>string</td><td>"Widget / Eagle BRD v4"</td></tr><tr valign="top"><td>desc</td><td>string</td><td>"This widget lets you drag in an Eagle PCB \".brd\" file to mill."</td></tr><tr valign="top"><td>url</td><td>string</td><td>"http://raw.githubusercontent.com/atomsfat/widget-eagle/master/auto-generated-widget.html"</td></tr><tr valign="top"><td>fiddleurl</td><td>string</td><td>"http://ide.c9.io/atomsfat/workspace-grbl"</td></tr><tr valign="top"><td>githuburl</td><td>string</td><td>"http://github.com/atomsfat/widget-eagle"</td></tr><tr valign="top"><td>testurl</td><td>string</td><td>"http://workspace-grbl-atomsfat.c9users.io/widget.html"</td></tr><tr valign="top"><td>publish</td><td>object</td><td>Please see docs above.<br><br>Define the publish signals that this widget/element owns or defines so that
 other widgets know how to subscribe to them and what they do.</td></tr><tr valign="top"><td>subscribe</td><td>object</td><td>Please see docs above.<br><br>Define the subscribe signals that this widget/element owns or defines so that
 other widgets know how to subscribe to them and what they do.</td></tr><tr valign="top"><td>foreignPublish</td><td>object</td><td>Please see docs above.<br><br>Document the foreign publish signals, i.e. signals owned by other widgets
 or elements, that this widget/element publishes to.</td></tr><tr valign="top"><td>foreignSubscribe</td><td>object</td><td>Please see docs above.<br><br>Document the foreign subscribe signals, i.e. signals owned by other widgets

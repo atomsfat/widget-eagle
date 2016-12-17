@@ -165,7 +165,7 @@ requirejs.config({
 });
 
 // Test this element. This code is auto-removed by the chilipeppr.load()
-cprequire_test(["inline:com-chilipeppr-widget-eagle"], function (ew) {
+cprequire_test(["inline:com-chilipeppr-widget-eagle-debug"], function (ew) {
 
     // Test this element. This code is auto-removed by the chilipeppr.load()
     // when using this widget in production. So use the cpquire_test to do things
@@ -244,18 +244,18 @@ cprequire_test(["inline:com-chilipeppr-widget-eagle"], function (ew) {
 } /*end_test*/ );
 
 // This is the main definition of your widget. Give it a unique name.
-cpdefine("inline:com-chilipeppr-widget-eagle", ["chilipeppr_ready", "Clipper", "jqueryuiWidget"], function () {
+cpdefine("inline:com-chilipeppr-widget-eagle-debug", ["chilipeppr_ready", "Clipper", "jqueryuiWidget"], function () {
     return {
         /**
          * The ID of the widget. You must define this and make it unique.
          */
-        id: "com-chilipeppr-widget-eagle",
+        id: "com-chilipeppr-widget-eagle-debug",
         name: "Widget / Eagle BRD v4",
         desc: "This widget lets you drag in an Eagle PCB \".brd\" file to mill.",
-        url: "http://raw.githubusercontent.com/chilipeppr/widget-eagle/master/auto-generated-widget.html",       // The final URL of the working widget as a single HTML file with CSS and Javascript inlined. You can let runme.js auto fill this if you are using Cloud9.
-        fiddleurl: "http://ide.c9.io/chilipeppr/widget-eagle", // The edit URL. This can be auto-filled by runme.js in Cloud9 if you'd like, or just define it on your own to help people know where they can edit/fork your widget
-        githuburl: "http://github.com/chilipeppr/widget-eagle", // The backing github repo
-        testurl: "http://widget-eagle-chilipeppr.c9users.io/widget.html",   // The standalone working widget so can view it working by itself
+        url: "http://raw.githubusercontent.com/atomsfat/widget-eagle/master/auto-generated-widget.html",       // The final URL of the working widget as a single HTML file with CSS and Javascript inlined. You can let runme.js auto fill this if you are using Cloud9.
+        fiddleurl: "http://ide.c9.io/atomsfat/workspace-grbl", // The edit URL. This can be auto-filled by runme.js in Cloud9 if you'd like, or just define it on your own to help people know where they can edit/fork your widget
+        githuburl: "http://github.com/atomsfat/widget-eagle", // The backing github repo
+        testurl: "http://workspace-grbl-atomsfat.c9users.io/widget.html",   // The standalone working widget so can view it working by itself
         /**
          * Define pubsub signals below. These are basically ChiliPeppr's event system.
          * ChiliPeppr uses amplify.js's pubsub system so please refer to docs at
@@ -1786,17 +1786,17 @@ onAddGcode : function(addGcodeCallback, gcodeParts, eagleWidget, helpDesc){
             // on the gcode being shown by the 3d viewer
             this.threePathEndMill.forEach(function(threeObj) {
                 console.log("tweaking endmill path now that we're sending gcode. threeObj:", threeObj);
-                if (threeObj.children.length > 0) {
-                    threeObj.children[0].material.opacity = 0.1;
-                    threeObj.children[0].material.color = 0x000000;
-                    /*threeObj.children.forEach(function(threeObjChild) {
-                        threeObjChild.material.color = 0x000000;
-                        threeObjChild.material.opacity = 0.1;
-                    });*/
-                } else {
-                    threeObj.material.color = 0x000000;
-                    threeObj.material.opacity = 0.1;
-                }
+                // if (threeObj.children.length > 0) {
+                //     threeObj.children[0].material.opacity = 0.1;
+                //     threeObj.children[0].material.color = 0x000000;
+                //     /*threeObj.children.forEach(function(threeObjChild) {
+                //         threeObjChild.material.color = 0x000000;
+                //         threeObjChild.material.opacity = 0.1;
+                //     });*/
+                // } else {
+                //     threeObj.material.color = 0x000000;
+                //     threeObj.material.opacity = 0.1;
+                // }
             }, this);
             
             // or use alternate pubsub
